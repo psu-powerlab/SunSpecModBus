@@ -1,0 +1,9 @@
+@PACKAGE_INIT@
+
+foreach(_comp ${SunSpecModBus_FIND_COMPONENTS})
+  if (NOT _comp IN_LIST _supported_components)
+    set(SunSpecModBus_FOUND False)
+    set(SunSpecModBus_NOT_FOUND_MESSAGE "Unsupported component: ${_comp}")
+  endif()
+  include("${CMAKE_CURRENT_LIST_DIR}/SunSpecModBus${_comp}Targets.cmake")
+endforeach()
