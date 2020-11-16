@@ -41,7 +41,7 @@ public:
 
 private:
     modbus_t* context_ptr_;
-    std::string model_path_ = SUNSPEC_MODEL_PATH;
+    std::string model_path_ = "smdx/";
     unsigned int sunspec_key_;
     std::vector <std::shared_ptr <SunSpecModel>> models_;
 

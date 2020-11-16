@@ -21,8 +21,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(sunspec)
 
-add_definitions(-DSUNSPEC_MODEL_PATH="${sunspec_SOURCE_DIR}/")
-
 # Find preinstall packages 
 find_package (Boost REQUIRED)
 find_package (PkgConfig REQUIRED)
