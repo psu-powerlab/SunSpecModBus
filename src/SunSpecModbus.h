@@ -12,7 +12,12 @@
 // registers to be used by a controller.
 class SunSpecModbus {
 public:
-    SunSpecModbus (std::map <std::string, std::string>& configs);
+    SunSpecModbus (
+        const unsigned int did, 
+        const unsigned long int key, 
+        const char* ip, 
+        const unsigned int port
+    );
     ~SunSpecModbus ();
     void ReadRegisters (unsigned int offset,
                         unsigned int length,
@@ -36,7 +41,7 @@ public:
 
 private:
     modbus_t* context_ptr_;
-    std::string model_path_;
+    std::string model_path_ = SUNSPEC_MODEL_PATH;
     unsigned int sunspec_key_;
     std::vector <std::shared_ptr <SunSpecModel>> models_;
 

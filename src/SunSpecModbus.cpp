@@ -4,18 +4,18 @@
 #include <sys/stat.h>
 #include "SunSpecModbus.h"
 
-SunSpecModbus::SunSpecModbus (std::map <std::string, std::string>& configs)
-    : model_path_(configs["path"]), sunspec_key_(stoul(configs["key"])) {
-    // create modbus context pointer and connect to device at
-    // given ip address and port number.
-    const char* ip = configs["ip"].c_str ();
-    unsigned int port = stoul(configs["port"]);
+SunSpecModbus::SunSpecModbus (
+        const unsigned int did, 
+        const unsigned long int key, 
+        const char* ip, 
+        const unsigned int port
+    ) : sunspec_key_(key) 
+    {
     context_ptr_ = modbus_new_tcp(ip, port);
     if (modbus_connect(context_ptr_) == -1) {
         std::cout << "[ERROR] : " << modbus_strerror(errno) << '\n';
     }
 
-    unsigned int did = stoul(configs["did"]);
     SunSpecModbus::Query (did);
 }
 
