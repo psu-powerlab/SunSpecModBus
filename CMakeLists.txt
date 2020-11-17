@@ -21,6 +21,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(sunspec)
 
+# This is a hack to have the program have access to the xml files.
+# This should be packaged up with the static library, but I just
+# couldn't figure out how to do that.
+file(COPY ${sunspec_SOURCE_DIR}/smdx DESTINATION ${CMAKE_SOURCE_DIR})
+
+file(COPY ${sunspec_SOURCE_DIRS} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 # Find preinstall packages 
 find_package (Boost REQUIRED)
 find_package (PkgConfig REQUIRED)

@@ -1,7 +1,11 @@
+add_executable(app main.cpp)
+target_link_libraries(app PRIVATE Boost::boost SunSpecModbus)
+target_include_directories(app PUBLIC ${SunSpecModbus_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
+
 # Create library
 add_library(SunSpecModbus STATIC SunSpecModbus.cpp SunSpecModel.cpp)
 target_link_libraries(SunSpecModbus PRIVATE Boost::boost modbus)
-target_include_directories(SunSpecModbus PUBLIC ${Boost_INCLUDE_DIRS} ${sunspec_INCLUDE_DIRS}/)
+target_include_directories(SunSpecModbus PUBLIC ${Boost_INCLUDE_DIRS})
 
 # add include directories
 target_include_directories(SunSpecModbus
